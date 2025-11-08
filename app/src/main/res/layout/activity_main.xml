@@ -5,15 +5,97 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#121212"
     tools:context=".MainActivity">
 
     <TextView
+        android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
+        android:text="Calculadora de Clinómetro"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.078" />
 
+    <EditText
+        android:id="@+id/etxDistancia"
+        android:layout_width="248dp"
+        android:layout_height="49dp"
+        android:ems="10"
+        android:hint="Distancia al objeto (Metros)"
+        android:inputType="numberDecimal"
+        android:textColor="#FFFFFF"
+        android:textColorHighlight="#B0B0B0"
+        android:textColorHint="#B0B0B0"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintVertical_bias="0.094" />
+
+    <EditText
+        android:id="@+id/etxAngulo"
+        android:layout_width="252dp"
+        android:layout_height="50dp"
+        android:ems="10"
+        android:hint="Angulo (Grados)"
+        android:inputType="numberDecimal"
+        android:textColor="#FFFFFF"
+        android:textColorHighlight="#B0B0B0"
+        android:textColorHint="#B0B0B0"
+        app:layout_constraintBottom_toTopOf="@+id/etxAlturaOjos"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etxDistancia" />
+
+    <EditText
+        android:id="@+id/etxAlturaOjos"
+        android:layout_width="253dp"
+        android:layout_height="56dp"
+        android:layout_marginBottom="392dp"
+        android:ems="10"
+        android:hint="Altura de tus ojos (Metros)"
+        android:inputType="numberDecimal"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#B0B0B0"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btnCalcular"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#00BCD4"
+        android:text="Calcular Altura Total"
+        android:textColor="#000000"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etxAlturaOjos"
+        app:layout_constraintVertical_bias="0.142" />
+
+    <TextView
+        android:id="@+id/txvResultado"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="La Altura del edificio es: __.__ metros"
+        android:textColor="#00BCD4"
+        android:textSize="22sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnCalcular"
+        app:layout_constraintVertical_bias="0.253" />
 </androidx.constraintlayout.widget.ConstraintLayout>
