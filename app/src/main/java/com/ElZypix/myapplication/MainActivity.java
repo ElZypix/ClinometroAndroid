@@ -2,6 +2,7 @@ package com.ElZypix.myapplication;
 
 import android.os.Bundle;
 import android.view.View;
+import android.view.inputmethod.InputMethod;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -12,6 +13,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+
+import android.content.Context;
+import android.view.inputmethod.InputMethodManager;
 
 public class MainActivity extends AppCompatActivity {
     private EditText etxDistancia, etxAngulo, etxAlturaOjos;
@@ -43,17 +47,61 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void CalcularAltura(View view){
-        try {
-            double Distancia, Angulo, AlturaOjos;
-            Distancia = Double.parseDouble(etxDistancia.getText().toString());
-            Angulo = Double.parseDouble(etxAngulo.getText().toString());
-            AlturaOjos = Double.parseDouble(etxAlturaOjos.getText().toString());
+        double Distancia, Angulo, AlturaOjos;
+        String strDistancia, strAngulo, strAlturaOjo;
+        strDistancia = etxDistancia.getText().toString();
+        strAngulo = etxAngulo.getText().toString();
+        strAlturaOjo = etxAlturaOjos.getText().toString();
 
-            double x = Distancia * Math.tan(Math.toRadians(Angulo));
-            double AlturaTotal = x + AlturaOjos;
-            txvResultado.setText("La Altura del edificio es: " + String.format("%.2f", AlturaTotal) + " metros");
-        }catch (NumberFormatException e){
-            Toast.makeText(this, "Favor de llenar todos los campos", Toast.LENGTH_SHORT).show();
+        if (strDistancia.isEmpty() && strAngulo.isEmpty() && strAlturaOjo.isEmpty()){
+            Toast.makeText(this, "Los campos no pueden estar vacios", Toast.LENGTH_SHORT).show();
+        }
+        if(strDistancia.isEmpty()){
+            Toast.makeText(this, "La distancia no puedes estar vacia", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        if(strAngulo.isEmpty()){
+            Toast.makeText(this, "El angulo no puede estar vacio", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        if(strAlturaOjo.isEmpty()){
+            Toast.makeText(this, "La altura de tus ojos no puede estar vacia", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        Distancia = Double.parseDouble(strDistancia);
+        Angulo = Double.parseDouble(strAngulo);
+        AlturaOjos = Double.parseDouble(strAlturaOjo);
+
+        if (Distancia <= 0){
+            Toast.makeText(this, "La distancia debe de ser mayor a 0", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        if (Angulo <= 0 || Angulo >= 90){
+            Toast.makeText(this, "El angulo debe de ser entre 1 y 89 grados", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        if (AlturaOjos <= 0){
+            Toast.makeText(this, "La altura de los ojos debe de ser mayor a 0", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        double x = Distancia * Math.tan(Math.toRadians(Angulo));
+        double AlturaTotal = x + AlturaOjos;
+        txvResultado.setText("La Altura del edificio es: " + String.format("%.5f", AlturaTotal) + " metros");
+    }
+    public void LimpiarCampos(View view){
+        etxDistancia.setText("");
+        etxAlturaOjos.setText("");
+        etxAngulo.setText("");
+        txvResultado.setText("La Altura del edificio es: __.__ metros");
+        etxDistancia.requestFocus();
+
+        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+
+        if (imm != null){
+            imm.showSoftInput(etxDistancia, InputMethodManager.SHOW_IMPLICIT);
         }
     }
+
 }
