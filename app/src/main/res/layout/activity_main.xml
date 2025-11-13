@@ -113,4 +113,17 @@
         app:layout_constraintStart_toEndOf="@+id/btnCalcular"
         app:layout_constraintTop_toBottomOf="@+id/etxAlturaOjos"
         app:layout_constraintVertical_bias="0.139" />
+
+    <Button
+        android:id="@+id/btn_ObtenerDistancia"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#00BCD4"
+        android:text="No conozco la distancia"
+        android:textColor="#000000"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.891" />
 </androidx.constraintlayout.widget.ConstraintLayout>

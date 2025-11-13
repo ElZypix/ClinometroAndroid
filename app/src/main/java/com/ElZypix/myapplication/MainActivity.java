@@ -1,5 +1,6 @@
 package com.ElZypix.myapplication;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.inputmethod.InputMethod;
@@ -19,7 +20,6 @@ import android.view.inputmethod.InputMethodManager;
 
 public class MainActivity extends AppCompatActivity {
     private EditText etxDistancia, etxAngulo, etxAlturaOjos;
-    private Button btnCalcular;
     private TextView txvResultado;
 
     @Override
@@ -37,9 +37,6 @@ public class MainActivity extends AppCompatActivity {
         etxDistancia = findViewById(R.id.etxDistancia);
         etxAngulo = findViewById(R.id.etxAngulo);
         etxAlturaOjos = findViewById(R.id.etxAlturaOjos);
-
-        //Inicializo los elementos de tipo Button
-        btnCalcular = findViewById(R.id.btnCalcular);
 
         //Inicializo los elementos de tipo TextView
         txvResultado = findViewById(R.id.txvResultado);
@@ -102,6 +99,10 @@ public class MainActivity extends AppCompatActivity {
         if (imm != null){
             imm.showSoftInput(etxDistancia, InputMethodManager.SHOW_IMPLICIT);
         }
+    }
+    public void CalcularDistancia(View view){
+        Intent intent = new Intent(this, SegundaVentana.class);
+        StartActivity(intent);
     }
 
 }
