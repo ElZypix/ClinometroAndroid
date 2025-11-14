@@ -9,10 +9,11 @@
     tools:context=".SegundaVentana">
 
     <Button
-        android:id="@+id/btn_regresar"
+        android:id="@+id/btnRegresar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="#00BCD4"
+        android:onClick="RegresarPantallaPrincipal"
         android:text="Regresar"
         android:textColor="#000000"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -22,91 +23,97 @@
         app:layout_constraintVertical_bias="0.891" />
 
     <TextView
-        android:id="@+id/txvResultado"
+        android:id="@+id/txvResultado2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="La Altura del edificio es: __.__ metros"
+        android:text="La distancia es de _.__ metros"
         android:textColor="#00BCD4"
         android:textSize="22sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_calcular"
+        app:layout_constraintTop_toBottomOf="@+id/btnCalcular2"
         app:layout_constraintVertical_bias="0.253" />
 
     <Button
-        android:id="@+id/btn_limpiar"
+        android:id="@+id/btnCalcular2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="340dp"
         android:backgroundTint="#00BCD4"
-        android:onClick="LimpiarCampos"
+        android:onClick="CalcularDistancia"
+        android:text="Calcular Altura Total"
+        android:textColor="#000000"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.866"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etxAlturaOjos"
+        app:layout_constraintVertical_bias="0.139" />
+
+    <Button
+        android:id="@+id/btnLimpiar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="340dp"
+        android:backgroundTint="#00BCD4"
+        android:onClick="CalcularAltura"
         android:text="Limpiar"
         android:textColor="#000000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.418"
-        app:layout_constraintStart_toEndOf="@+id/btn_calcular"
-        app:layout_constraintTop_toBottomOf="@+id/etxAngulo"
-        app:layout_constraintVertical_bias="0.244" />
-
-    <Button
-        android:id="@+id/btn_calcular"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="272dp"
-        android:backgroundTint="#00BCD4"
-        android:onClick="CalcularAltura"
-        android:text="Obtener distancia"
-        android:textColor="#000000"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.223"
+        app:layout_constraintHorizontal_bias="0.103"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etxAngulo"
+        app:layout_constraintTop_toBottomOf="@+id/etxAngulo2"
         app:layout_constraintVertical_bias="1.0" />
 
-    <TextView
-        android:id="@+id/Tutulo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Calcular distancia"
+    <EditText
+        android:id="@+id/etxAngulo2"
+        android:layout_width="252dp"
+        android:layout_height="50dp"
+        android:ems="10"
+        android:hint="Angulo (Grados)"
+        android:inputType="numberDecimal"
         android:textColor="#FFFFFF"
-        android:textSize="24sp"
+        android:textColorHighlight="#B0B0B0"
+        android:textColorHint="#B0B0B0"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.509"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.092" />
+        app:layout_constraintTop_toBottomOf="@+id/etxAltura"
+        app:layout_constraintVertical_bias="0.096" />
 
     <EditText
         android:id="@+id/etxAltura"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="248dp"
+        android:layout_height="49dp"
         android:ems="10"
-        android:hint="Ingrese su altura (metros)"
+        android:hint="Altura (Metros)"
         android:inputType="numberDecimal"
+        android:textColor="#FFFFFF"
+        android:textColorHighlight="#B0B0B0"
         android:textColorHint="#B0B0B0"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Tutulo"
-        app:layout_constraintVertical_bias="0.115" />
+        app:layout_constraintTop_toBottomOf="@+id/textView3"
+        app:layout_constraintVertical_bias="0.094" />
 
-    <EditText
-        android:id="@+id/etxAngulo"
+    <TextView
+        android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="340dp"
-        android:ems="10"
-        android:hint="Ingrese el angulo (grados)"
-        android:inputType="numberDecimal"
-        android:textColorHint="#B0B0B0"
+        android:text="Calculadora de Clinómetro"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etxAltura" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.078" />
 </androidx.constraintlayout.widget.ConstraintLayout>

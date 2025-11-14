@@ -1,5 +1,6 @@
 package com.ElZypix.myapplication;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -10,6 +11,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -21,6 +26,22 @@ import android.view.inputmethod.InputMethodManager;
 public class MainActivity extends AppCompatActivity {
     private EditText etxDistancia, etxAngulo, etxAlturaOjos;
     private TextView txvResultado;
+
+    ActivityResultLauncher<Intent> launcherSegundaVentana = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            new ActivityResultCallback<ActivityResult>() {
+                @Override
+                public void onActivityResult(ActivityResult result) {
+                    if(result.getResultCode() == Activity.RESULT_OK){
+                        Intent Data = result.getData();
+                        if(Data != null){
+                            double DistanciaRecibida = Data.getDoubleExtra("Dato_distancia", 0.0);
+                            etxDistancia.setText(String.format("%.5f", DistanciaRecibida).replace(",", "."));
+                        }
+                    }
+                }
+            }
+    );
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -100,9 +121,9 @@ public class MainActivity extends AppCompatActivity {
             imm.showSoftInput(etxDistancia, InputMethodManager.SHOW_IMPLICIT);
         }
     }
-    public void CalcularDistancia(View view){
+    public void IrACalcularDistancia(View view){
         Intent intent = new Intent(this, SegundaVentana.class);
-        StartActivity(intent);
+        launcherSegundaVentana.launch(intent);
     }
 
 }
