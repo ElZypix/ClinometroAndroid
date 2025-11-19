@@ -12,10 +12,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Clinometro">
         <activity
-            android:name=".SegundaVentana"
-            android:exported="false" />
-        <activity
             android:name=".MainActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".SegundaVentana"
+            android:exported="false"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".PaginaPrincipal"
             android:exported="true"
             android:screenOrientation="portrait">
             <intent-filter>

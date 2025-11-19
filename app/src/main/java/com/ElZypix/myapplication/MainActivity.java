@@ -27,22 +27,6 @@ public class MainActivity extends AppCompatActivity {
     private EditText etxDistancia, etxAngulo, etxAlturaOjos;
     private TextView txvResultado;
 
-    ActivityResultLauncher<Intent> launcherSegundaVentana = registerForActivityResult(
-            new ActivityResultContracts.StartActivityForResult(),
-            new ActivityResultCallback<ActivityResult>() {
-                @Override
-                public void onActivityResult(ActivityResult result) {
-                    if(result.getResultCode() == Activity.RESULT_OK){
-                        Intent Data = result.getData();
-                        if(Data != null){
-                            double DistanciaRecibida = Data.getDoubleExtra("Dato_distancia", 0.0);
-                            etxDistancia.setText(String.format("%.5f", DistanciaRecibida).replace(",", "."));
-                        }
-                    }
-                }
-            }
-    );
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,6 +45,12 @@ public class MainActivity extends AppCompatActivity {
 
         //Inicializo los elementos de tipo TextView
         txvResultado = findViewById(R.id.txvResultado);
+
+        Intent RecibirDatos = getIntent();
+        if (RecibirDatos != null && RecibirDatos.hasExtra("Dato_distancia")){
+            double distanciaRecibida = RecibirDatos.getDoubleExtra("Dato_distancia", 0.0);
+            etxDistancia.setText(String.format("%.5f", distanciaRecibida).replace(",", "."));
+        }
 
     }
 
@@ -121,9 +111,8 @@ public class MainActivity extends AppCompatActivity {
             imm.showSoftInput(etxDistancia, InputMethodManager.SHOW_IMPLICIT);
         }
     }
-    public void IrACalcularDistancia(View view){
-        Intent intent = new Intent(this, SegundaVentana.class);
-        launcherSegundaVentana.launch(intent);
+    public void paginaPrincipal(View view){
+        finish();
     }
 
 }

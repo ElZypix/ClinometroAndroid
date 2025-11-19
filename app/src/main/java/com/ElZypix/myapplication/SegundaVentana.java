@@ -73,16 +73,22 @@ public class SegundaVentana extends AppCompatActivity {
     public void LimparCampos(View view){
         etxAltura.setText("");
         etxAngulo.setText("");
-        txvResultado2.setText("La Altura del edificio es: __.__ metros");
+        txvResultado2.setText("La distancia es de: __.__ metros");
         etxAltura.requestFocus();
 
         InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-        imm.showSoftInput(etxAltura, InputMethodManager.SHOW_IMPLICIT);
+        if (imm != null) {
+            imm.showSoftInput(etxAltura, InputMethodManager.SHOW_IMPLICIT);
+        }
     }
-    public void RegresarPantallaPrincipal(View view){
+    public void EnviarDatos(View view){
+        if (DistanciaTotal == 0){
+            Toast.makeText(this, "Debes de calcular la distancia primero", Toast.LENGTH_SHORT).show();
+            return;
+        }
         Intent intent = new Intent(this, MainActivity.class);
         intent.putExtra("Dato_distancia", DistanciaTotal);
-        setResult(RESULT_OK, intent);
+        startActivity(intent);
         finish();
     }
 
