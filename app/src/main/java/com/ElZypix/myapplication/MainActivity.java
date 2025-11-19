@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
 
         //Inicializo los elementos de tipo EditText
         etxDistancia = findViewById(R.id.etxDistancia);
-        etxAngulo = findViewById(R.id.etxAngulo);
+        etxAngulo = findViewById(R.id.etxAngulo2);
         etxAlturaOjos = findViewById(R.id.etxAlturaOjos);
 
         //Inicializo los elementos de tipo TextView

@@ -9,122 +9,151 @@
     tools:context=".MainActivity">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/tvTituloAltura"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Calculadora de Clinómetro"
-        android:textColor="#FFFFFF"
-        android:textSize="24sp"
+        android:text="CALCULAR ALTURA"
+        android:textColor="#00BCD4"
+        android:textSize="28sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:letterSpacing="0.05"
+        android:layout_marginTop="32dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.078" />
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/etxDistancia"
-        android:layout_width="248dp"
-        android:layout_height="49dp"
-        android:ems="10"
-        android:hint="Distancia al objeto (Metros)"
-        android:inputType="numberDecimal"
-        android:textColor="#FFFFFF"
-        android:textColorHighlight="#B0B0B0"
-        android:textColorHint="#B0B0B0"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:layout_constraintVertical_bias="0.094" />
-
-    <EditText
-        android:id="@+id/etxAngulo"
-        android:layout_width="252dp"
-        android:layout_height="50dp"
-        android:ems="10"
-        android:hint="Angulo (Grados)"
-        android:inputType="numberDecimal"
-        android:textColor="#FFFFFF"
-        android:textColorHighlight="#B0B0B0"
-        android:textColorHint="#B0B0B0"
-        app:layout_constraintBottom_toTopOf="@+id/etxAlturaOjos"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etxDistancia" />
-
-    <EditText
-        android:id="@+id/etxAlturaOjos"
-        android:layout_width="253dp"
-        android:layout_height="56dp"
-        android:layout_marginBottom="392dp"
-        android:ems="10"
-        android:hint="Altura de tus ojos (Metros)"
-        android:inputType="numberDecimal"
-        android:textColor="#FFFFFF"
-        android:textColorHint="#B0B0B0"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/btnCalcular"
-        android:layout_width="wrap_content"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tilDistancia"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:backgroundTint="#00BCD4"
-        android:onClick="CalcularAltura"
-        android:text="Calcular Altura Total"
-        android:textColor="#000000"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:hint="Distancia del Objeto (Metros)"
+        android:textColorHint="#B0B0B0"
+        app:boxStrokeColor="#00BCD4"
+        app:hintTextColor="#00BCD4"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.892"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etxAlturaOjos"
-        app:layout_constraintVertical_bias="0.139" />
+        app:layout_constraintTop_toBottomOf="@+id/tvTituloAltura"
+        android:layout_marginTop="48dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etxDistancia"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal"
+            android:textColor="#FFFFFF"
+            android:textCursorDrawable="@drawable/cursor_cian" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tilAngulo"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Ángulo de Elevación (Grados)"
+        android:textColorHint="#B0B0B0"
+        app:boxStrokeColor="#00BCD4"
+        app:hintTextColor="#00BCD4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tilDistancia"
+        android:layout_marginTop="24dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etxAngulo2" android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal"
+            android:textColor="#FFFFFF"
+            android:textCursorDrawable="@drawable/cursor_cian" /> </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tilAlturaOjo"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Altura de tus Ojos (Metros)"
+        android:textColorHint="#B0B0B0"
+        app:boxStrokeColor="#00BCD4"
+        app:hintTextColor="#00BCD4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tilAngulo"
+        android:layout_marginTop="24dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etxAlturaOjos" android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal"
+            android:textColor="#FFFFFF"
+            android:textCursorDrawable="@drawable/cursor_cian" /> </com.google.android.material.textfield.TextInputLayout>
+
+    <LinearLayout
+        android:id="@+id/layoutBotonesCalculo"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tilAlturaOjo"
+        android:layout_marginTop="48dp">
+
+        <Button
+            android:id="@+id/btnLimpiar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_weight="1"
+            android:backgroundTint="#00BCD4"
+            android:onClick="LimpiarCampos"
+            android:text="Limpiar"
+            android:textColor="#121212"
+            android:textSize="16sp"
+            app:icon="@drawable/ic_delate"
+            app:iconTint="#121212" />
+
+        <Button
+            android:id="@+id/btnCalcular"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="#00BCD4"
+            android:onClick="CalcularAltura"
+            android:text="Calcular Distancia"
+            android:textColor="#121212"
+            android:textSize="16sp"
+            app:icon="@drawable/ic_calculate"
+            app:iconTint="#121212" />
+
+    </LinearLayout>
 
     <TextView
         android:id="@+id/txvResultado"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="La Altura del edificio es: __.__ metros"
+        android:text="La altura es de _._ metros"
         android:textColor="#00BCD4"
-        android:textSize="22sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:gravity="center"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnCalcular"
-        app:layout_constraintVertical_bias="0.253" />
+        app:layout_constraintTop_toBottomOf="@+id/layoutBotonesCalculo"
+        android:layout_marginTop="48dp"/>
 
     <Button
-        android:id="@+id/btn_limpiar"
-        android:layout_width="wrap_content"
+        android:id="@+id/btnEnviar"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:backgroundTint="#00BCD4"
-        android:onClick="LimparCampos"
-        android:text="Limpiar"
-        android:textColor="#000000"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/btnCalcular"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etxAlturaOjos"
-        app:layout_constraintVertical_bias="0.139" />
-
-    <Button
-        android:id="@+id/btn_ObtenerDistancia"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
         android:backgroundTint="#00BCD4"
         android:onClick="paginaPrincipal"
         android:text="Regresar"
-        android:textColor="#000000"
+        android:textColor="#121212"
+        android:textSize="16sp"
+        app:icon="@drawable/ic_replay"
+        app:iconTint="#121212"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.891" />
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
