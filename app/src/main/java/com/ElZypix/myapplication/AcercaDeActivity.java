@@ -1,6 +1,5 @@
 package com.ElZypix.myapplication;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
@@ -10,31 +9,20 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-public class PaginaPrincipal extends AppCompatActivity {
+public class AcercaDeActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_pagina_principal);
+        setContentView(R.layout.activity_acerca_de);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
     }
-
-    public void MainActivity(View view) {
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
-    }
-
-    public void Segundaventana(View view) {
-        Intent intent = new Intent(this, SegundaVentana.class);
-        startActivity(intent);
-    }
-    public void irAAcercaDe(View view) {
-        Intent intent = new Intent(this, AcercaDeActivity.class);
-        startActivity(intent);
+    public void regresar(View view) {
+        finish();
     }
 }
