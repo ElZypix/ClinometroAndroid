@@ -23,6 +23,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/tilAltura"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -43,7 +44,9 @@
             android:layout_height="wrap_content"
             android:inputType="numberDecimal"
             android:textColor="#FFFFFF"
-            android:textCursorDrawable="@drawable/cursor_cian" /> </com.google.android.material.textfield.TextInputLayout>
+            android:textCursorDrawable="@drawable/cursor_cian" />
+    </com.google.android.material.textfield.TextInputLayout>
+
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/tilAngulo"
@@ -60,11 +63,14 @@
         android:layout_marginTop="24dp">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/etxAngulo2" android:layout_width="match_parent"
+            android:id="@+id/etxAngulo2"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="numberDecimal"
             android:textColor="#FFFFFF"
-            android:textCursorDrawable="@drawable/cursor_cian" /> </com.google.android.material.textfield.TextInputLayout>
+            android:textCursorDrawable="@drawable/cursor_cian" />
+    </com.google.android.material.textfield.TextInputLayout>
+
 
     <LinearLayout
         android:id="@+id/layoutBotonesCalculo"
@@ -101,16 +107,17 @@
             android:text="Calcular Distancia"
             android:textColor="#121212"
             android:textSize="16sp"
-            app:icon="@drawable/ic_trending_up"
+            app:icon="@drawable/ic_calculate"
             app:iconTint="#121212" />
 
     </LinearLayout>
+
 
     <TextView
         android:id="@+id/txvResultado2"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="La distancia es de _._ metros"
+        android:text="La distancia es de __.__ metros"
         android:textColor="#00BCD4"
         android:textSize="20sp"
         android:textStyle="bold"
@@ -119,6 +126,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/layoutBotonesCalculo"
         android:layout_marginTop="48dp"/>
+
 
     <Button
         android:id="@+id/btnEnviar"
