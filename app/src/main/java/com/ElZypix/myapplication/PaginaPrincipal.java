@@ -37,4 +37,8 @@ public class PaginaPrincipal extends AppCompatActivity {
         Intent intent = new Intent(this, AcercaDeActivity.class);
         startActivity(intent);
     }
+    public void irAHistorial(View view) {
+        Intent intent = new Intent(this, HistorialActivity.class);
+        startActivity(intent);
+    }
 }

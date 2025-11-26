@@ -1,30 +1,31 @@
 package com.ElZypix.myapplication;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.view.inputmethod.InputMethod;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.activity.EdgeToEdge;
-import androidx.activity.result.ActivityResult;
-import androidx.activity.result.ActivityResultCallback;
-import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
-
 import android.content.Context;
+import android.content.SharedPreferences;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.List;
 import android.view.inputmethod.InputMethodManager;
+import android.content.DialogInterface;
+import android.widget.EditText;
+import android.text.InputType;
+import com.google.android.material.textfield.TextInputEditText;
 
 public class MainActivity extends AppCompatActivity {
-    private EditText etxDistancia, etxAngulo, etxAlturaOjos;
+    private TextInputEditText etxDistancia, etxAngulo, etxAlturaOjos;
     private TextView txvResultado;
 
     @Override
@@ -63,17 +64,21 @@ public class MainActivity extends AppCompatActivity {
 
         if (strDistancia.isEmpty() && strAngulo.isEmpty() && strAlturaOjo.isEmpty()){
             Toast.makeText(this, "Los campos no pueden estar vacios", Toast.LENGTH_SHORT).show();
+            return;
         }
         if(strDistancia.isEmpty()){
             Toast.makeText(this, "La distancia no puedes estar vacia", Toast.LENGTH_SHORT).show();
+            etxDistancia.requestFocus();
             return;
         }
         if(strAngulo.isEmpty()){
             Toast.makeText(this, "El angulo no puede estar vacio", Toast.LENGTH_SHORT).show();
+            etxAngulo.requestFocus();
             return;
         }
         if(strAlturaOjo.isEmpty()){
             Toast.makeText(this, "La altura de tus ojos no puede estar vacia", Toast.LENGTH_SHORT).show();
+            etxAlturaOjos.requestFocus();
             return;
         }
 
@@ -114,5 +119,63 @@ public class MainActivity extends AppCompatActivity {
     public void paginaPrincipal(View view){
         finish();
     }
+    public void mostrarDialogoGuardar(View view){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Nombre del proyecto");
 
+        final EditText input = new EditText(this);
+        input.setHint("Ej. Edificio centro");
+        builder.setView(input);
+
+        builder.setPositiveButton("Guardar", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                String nombreProyecto = input.getText().toString();
+                if (!nombreProyecto.isEmpty()) {
+                    GuardarProyecto(nombreProyecto);
+                }
+                Toast.makeText(getApplicationContext(), "Guardando: "+ nombreProyecto, Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        builder.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int i) {
+                dialog.cancel();
+            }
+        });
+        builder.show();
+    }
+    private void GuardarProyecto(String nombre){
+        double distancia = Double.parseDouble(etxDistancia.getText().toString());
+        double angulo = Double.parseDouble(etxAngulo.getText().toString());
+        double alturaOjos = Double.parseDouble(etxAlturaOjos.getText().toString());
+
+        double x = distancia * Math.tan(Math.toRadians(angulo));
+        double alturaTotal = x + alturaOjos;
+
+        Logica_registros nuevoRegistro = new Logica_registros(nombre, distancia, angulo, alturaOjos, alturaTotal);
+
+        SharedPreferences sharedPreferences = getSharedPreferences("Mis_Preferencias", MODE_PRIVATE);
+        Gson gson = new Gson();
+
+        String jsonActual = sharedPreferences.getString("Lista_proyectos", null);
+        Type type = new TypeToken<ArrayList<Logica_registros>>() {}.getType();
+        ArrayList<Logica_registros> listaProyectos;
+
+        if (jsonActual == null){
+            listaProyectos = new ArrayList<>();
+        }else{
+            listaProyectos = gson.fromJson(jsonActual, type);
+        }
+        listaProyectos.add(nuevoRegistro);
+
+        String jsonActualizado = gson.toJson(listaProyectos);
+
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("Lista_proyectos", jsonActualizado);
+        editor.apply();
+
+        Toast.makeText(this, "Proyecto guardado correctamente", Toast.LENGTH_SHORT).show();
+    }
 }

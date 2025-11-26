@@ -140,5 +140,16 @@
         android:onClick="irAAcercaDe"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+    <ImageView
+        android:id="@+id/btnHistorial"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginStart="24dp"
+        android:src="@drawable/ic_history"
+        app:tint="#00BCD4"
+        android:onClick="irAHistorial"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
