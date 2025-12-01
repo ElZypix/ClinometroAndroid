@@ -9,6 +9,8 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.elzypix.clinometro.R;
+
 public class AcercaDeActivity extends AppCompatActivity {
 
     @Override

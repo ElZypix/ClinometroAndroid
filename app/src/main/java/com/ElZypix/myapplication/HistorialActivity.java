@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.elzypix.clinometro.R;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
