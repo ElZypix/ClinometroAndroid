@@ -12,21 +12,21 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Clinometro">
         <activity
-            android:name=".HistorialActivity"
+            android:name="com.ElZypix.myapplication.HistorialActivity"
             android:exported="false" />
         <activity
-            android:name=".AcercaDeActivity"
+            android:name="com.ElZypix.myapplication.AcercaDeActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name="com.ElZypix.myapplication.MainActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".SegundaVentana"
+            android:name="com.ElZypix.myapplication.SegundaVentana"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".PaginaPrincipal"
+            android:name="com.ElZypix.myapplication.PaginaPrincipal"
             android:exported="true"
             android:screenOrientation="portrait">
             <intent-filter>
